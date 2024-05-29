@@ -105,10 +105,10 @@
             const toggleButton = document.querySelector('.dark-mode-toggle');
             if (isDark) {
                 document.documentElement.setAttribute('data-theme', 'dark');
-                toggleButton.textContent = 'White Mode';
+                toggleButton.textContent = 'Dark Mode';
             } else {
                 document.documentElement.removeAttribute('data-theme');
-                toggleButton.textContent = 'Dark Mode';
+                toggleButton.textContent = 'White Mode';
             }
         }
 
@@ -132,7 +132,7 @@
         <a href="https://homeneth.vpn64.de" target="_blank">Nextcloud</a>
         <a href="http://192.168.178.98" target="_blank">Link 3</a>
         <!-- Hier kannst du weitere Links hinzufügen -->
-        <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">White Mode</button>
     </div>
 </body>
 </html>
