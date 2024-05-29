@@ -104,8 +104,10 @@
         function applyDarkMode(isDark) {
             if (isDark) {
                 document.documentElement.setAttribute('data-theme', 'dark');
+                document.querySelector('.dark-mode-toggle').textContent = 'White Mode';
             } else {
                 document.documentElement.removeAttribute('data-theme');
+                document.querySelector('.dark-mode-toggle').textContent = 'Dark Mode';
             }
         }
 
@@ -116,10 +118,10 @@
         }
 
         // Apply dark mode if the cookie is set before the page loads
-        const isDark = getCookie('darkmode') === 'true';
-        if (isDark) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
+        window.onload = () => {
+            const isDark = getCookie('darkmode') === 'true';
+            applyDarkMode(isDark);
+        };
     </script>
 </head>
 <body>
