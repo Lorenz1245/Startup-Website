@@ -70,9 +70,27 @@
     </div>
 
     <script>
-        function toggleDarkMode() {
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function applyDarkMode(isDark) {
             const bodyStyles = document.body.style;
-            if (bodyStyles.getPropertyValue('--background-color') === '#e0f7fa') {
+            if (isDark) {
                 bodyStyles.setProperty('--background-color', '#121212');
                 bodyStyles.setProperty('--text-color', '#ffffff');
                 bodyStyles.setProperty('--container-background', '#1e1e1e');
@@ -90,6 +108,18 @@
                 bodyStyles.setProperty('--button-color', '#ffffff');
             }
         }
+
+        function toggleDarkMode() {
+            const isDark = getCookie('darkmode') === 'true';
+            setCookie('darkmode', !isDark, 365);
+            applyDarkMode(!isDark);
+        }
+
+        // Apply dark mode if the cookie is set
+        window.onload = () => {
+            const isDark = getCookie('darkmode') === 'true';
+            applyDarkMode(isDark);
+        };
     </script>
 </body>
 </html>
