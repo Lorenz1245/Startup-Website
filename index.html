@@ -40,11 +40,13 @@
             padding: 10px;
             border: 1px solid var(--link-color, #1a73e8);
             border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
         a:hover {
             background-color: var(--link-color, #1a73e8);
             color: var(--link-hover-color, #fff);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .dark-mode-toggle {
             margin-top: 20px;
@@ -55,15 +57,19 @@
             border: none;
             border-radius: 5px;
             font-size: 16px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .dark-mode-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <img src="https://via.placeholder.com/100" alt="Profilbild" class="profile-img">
-        <a href="https://home.lorenz1245.de" target="_blank">Home Assistant</a>
-        <a href="https://homeneth.vpn64.de" target="_blank">Nextcloud</a>
+        <a href="https://home.lorenz1245.de" target="_blank">Link 1</a>
+        <a href="https://homeneth.vpn64.de" target="_blank">Link 2</a>
         <a href="http://192.168.178.98" target="_blank">Link 3</a>
         <!-- Hier kannst du weitere Links hinzufügen -->
         <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
