@@ -7,16 +7,17 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e0f7fa; /* Hellblauer Hintergrund */
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: var(--background-color, #e0f7fa);
+            color: var(--text-color, #000);
         }
         .container {
-            background-color: #dfefff; /* Sanftes Grau-Blau */
+            background-color: var(--container-background, #dfefff);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -33,17 +34,28 @@
         a {
             display: block;
             margin: 10px 0;
-            color: #1a73e8;
+            color: var(--link-color, #1a73e8);
             text-decoration: none;
             font-size: 18px;
             padding: 10px;
-            border: 1px solid #1a73e8;
+            border: 1px solid var(--link-color, #1a73e8);
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
         a:hover {
-            background-color: #1a73e8;
-            color: #fff;
+            background-color: var(--link-color, #1a73e8);
+            color: var(--link-hover-color, #fff);
+        }
+        .dark-mode-toggle {
+            margin-top: 20px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: var(--button-background, #1a73e8);
+            color: var(--button-color, #fff);
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s, color 0.3s;
         }
     </style>
 </head>
@@ -54,6 +66,30 @@
         <a href="https://homeneth.vpn64.de" target="_blank">Link 2</a>
         <a href="http://192.168.178.98" target="_blank">Link 3</a>
         <!-- Hier kannst du weitere Links hinzufügen -->
+        <button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
     </div>
+
+    <script>
+        function toggleDarkMode() {
+            const bodyStyles = document.body.style;
+            if (bodyStyles.getPropertyValue('--background-color') === '#e0f7fa') {
+                bodyStyles.setProperty('--background-color', '#121212');
+                bodyStyles.setProperty('--text-color', '#ffffff');
+                bodyStyles.setProperty('--container-background', '#1e1e1e');
+                bodyStyles.setProperty('--link-color', '#bb86fc');
+                bodyStyles.setProperty('--link-hover-color', '#1e1e1e');
+                bodyStyles.setProperty('--button-background', '#bb86fc');
+                bodyStyles.setProperty('--button-color', '#1e1e1e');
+            } else {
+                bodyStyles.setProperty('--background-color', '#e0f7fa');
+                bodyStyles.setProperty('--text-color', '#000000');
+                bodyStyles.setProperty('--container-background', '#dfefff');
+                bodyStyles.setProperty('--link-color', '#1a73e8');
+                bodyStyles.setProperty('--link-hover-color', '#ffffff');
+                bodyStyles.setProperty('--button-background', '#1a73e8');
+                bodyStyles.setProperty('--button-color', '#ffffff');
+            }
+        }
+    </script>
 </body>
 </html>
